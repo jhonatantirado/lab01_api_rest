@@ -1,0 +1,60 @@
+{
+	"info": {
+		"_postman_id": "7d7a247f-77b9-401a-8c36-fa697f1e5a4c",
+		"name": "DYCSW-ExamenRestAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Customers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://localhost:44313/v1/customers",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44313",
+					"path": [
+						"v1",
+						"customers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Customers SignUp",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"OrganizationName\": \"ABC Technologies\",\n\t\"Username\": \"juan.lopez\",\n\t\"Password\": \"superseguro\",\n\t\"ProjectName\": \"AFP Integra\",\n\t\"Budget\": 10000.00,\n\t\"CurrencyCode\": \"PEN\"\n}"
+				},
+				"url": {
+					"raw": "https://localhost:44313/v1/customers/signup",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44313",
+					"path": [
+						"v1",
+						"customers",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
