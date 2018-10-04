@@ -10,6 +10,10 @@ using EnterprisePatterns.Api.Customers.Infrastructure.Persistence.NHibernate.Rep
 using AutoMapper;
 using EnterprisePatterns.Api.Common.Application;
 using EnterprisePatterns.Api.Customers.Application.Assembler;
+using EnterprisePatterns.Api.Users.Domain.Repository;
+using EnterprisePatterns.Api.Users.Infrastructure.Persistence.NHibernate.Repository;
+using EnterprisePatterns.Api.Projects.Domain.Repository;
+using EnterprisePatterns.Api.Projects.Infrastructure.Persistence.NHibernate.Repository;
 
 namespace EnterprisePatterns.Api
 {
@@ -35,6 +39,16 @@ namespace EnterprisePatterns.Api
             {
                 IUnitOfWork unitOfWork = ctx.GetService<IUnitOfWork>();
                 return new CustomerNHibernateRepository((UnitOfWorkNHibernate)unitOfWork);
+            });
+            services.AddTransient<IUserRepository, UserNHibernateRepository>((ctx) =>
+            {
+                IUnitOfWork unitOfWork = ctx.GetService<IUnitOfWork>();
+                return new UserNHibernateRepository((UnitOfWorkNHibernate)unitOfWork);
+            });
+            services.AddTransient<IProjectRepository, ProjectNHibernateRepository>((ctx) =>
+            {
+                IUnitOfWork unitOfWork = ctx.GetService<IUnitOfWork>();
+                return new ProjectNHibernateRepository((UnitOfWorkNHibernate)unitOfWork);
             });
         }
 
