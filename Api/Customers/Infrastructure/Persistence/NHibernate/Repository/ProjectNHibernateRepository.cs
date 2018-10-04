@@ -1,27 +1,27 @@
 ﻿using EnterprisePatterns.Api.Common.Infrastructure.Persistence.NHibernate;
-using EnterprisePatterns.Api.Customers.Domain.Repository;
 using System.Collections.Generic;
 using System;
 using System.Linq;
+using EnterprisePatterns.Api.Projects.Domain.Repository;
 
-namespace EnterprisePatterns.Api.Customers.Infrastructure.Persistence.NHibernate.Repository
+namespace EnterprisePatterns.Api.Projects.Infrastructure.Persistence.NHibernate.Repository
 {
-    class CustomerNHibernateRepository : BaseNHibernateRepository<Customer>, ICustomerRepository
+    class ProjectNHibernateRepository : BaseNHibernateRepository<Project>, IProjectRepository
     {
-        public CustomerNHibernateRepository(UnitOfWorkNHibernate unitOfWork) : base(unitOfWork)
+        public ProjectNHibernateRepository(UnitOfWorkNHibernate unitOfWork) : base(unitOfWork)
         {
         }
 
-        public List<Customer> GetList(
+        public List<Project> GetList(
             int page = 0,
             int pageSize = 5)
         {
-            List<Customer> customers = new List<Customer>();
+            List<Project> projects = new List<Project>();
             bool uowStatus = false;
             try
             {
                 uowStatus = _unitOfWork.BeginTransaction();
-                customers = _unitOfWork.GetSession().Query<Customer>()
+                projects = _unitOfWork.GetSession().Query<Project>()
                     .Skip(page * pageSize)
                     .Take(pageSize)
                     .ToList();
@@ -31,7 +31,7 @@ namespace EnterprisePatterns.Api.Customers.Infrastructure.Persistence.NHibernate
                 _unitOfWork.Rollback(uowStatus);
                 throw ex;
             }
-            return customers;
+            return projects;
         }
     }
 }

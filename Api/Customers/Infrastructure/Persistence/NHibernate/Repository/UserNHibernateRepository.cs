@@ -1,27 +1,27 @@
 ﻿using EnterprisePatterns.Api.Common.Infrastructure.Persistence.NHibernate;
-using EnterprisePatterns.Api.Customers.Domain.Repository;
+using EnterprisePatterns.Api.Users.Domain.Repository;
 using System.Collections.Generic;
 using System;
 using System.Linq;
 
-namespace EnterprisePatterns.Api.Customers.Infrastructure.Persistence.NHibernate.Repository
+namespace EnterprisePatterns.Api.Users.Infrastructure.Persistence.NHibernate.Repository
 {
-    class CustomerNHibernateRepository : BaseNHibernateRepository<Customer>, ICustomerRepository
+    class UserNHibernateRepository : BaseNHibernateRepository<User>, IUserRepository
     {
-        public CustomerNHibernateRepository(UnitOfWorkNHibernate unitOfWork) : base(unitOfWork)
+        public UserNHibernateRepository(UnitOfWorkNHibernate unitOfWork) : base(unitOfWork)
         {
         }
 
-        public List<Customer> GetList(
+        public List<User> GetList(
             int page = 0,
             int pageSize = 5)
         {
-            List<Customer> customers = new List<Customer>();
+            List<User> users = new List<User>();
             bool uowStatus = false;
             try
             {
                 uowStatus = _unitOfWork.BeginTransaction();
-                customers = _unitOfWork.GetSession().Query<Customer>()
+                users = _unitOfWork.GetSession().Query<User>()
                     .Skip(page * pageSize)
                     .Take(pageSize)
                     .ToList();
@@ -31,7 +31,7 @@ namespace EnterprisePatterns.Api.Customers.Infrastructure.Persistence.NHibernate
                 _unitOfWork.Rollback(uowStatus);
                 throw ex;
             }
-            return customers;
+            return users;
         }
     }
 }

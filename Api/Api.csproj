@@ -17,7 +17,6 @@
   
   <ItemGroup>
     <Folder Include="Common\Application\Assembler\" />
-    <Folder Include="Customers\Application\Dto\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
