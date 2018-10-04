@@ -12,6 +12,7 @@ using EnterprisePatterns.Api.Users;
 using EnterprisePatterns.Api.Projects;
 using EnterprisePatterns.Api.Users.Domain.Repository;
 using EnterprisePatterns.Api.Projects.Domain.Repository;
+using Common.Application;
 
 namespace EnterprisePatterns.Api.Controllers
 {
@@ -60,6 +61,7 @@ namespace EnterprisePatterns.Api.Controllers
         [HttpPost]
         public IActionResult Create([FromBody] SignUpDto signUpDto)
         {
+            Notification notification = new Notification();
             bool uowStatus = false;
             try
             {
@@ -67,6 +69,13 @@ namespace EnterprisePatterns.Api.Controllers
 
                 Customer customer = new Customer();
                 customer.OrganizationName = signUpDto.OrganizationName;
+                notification = customer.validateForSave();
+
+                if(notification.hasErrors())
+                {
+                    return StatusCode(StatusCodes.Status400BadRequest, notification.ToString());
+                }
+
                 _customerRepository.Create(customer);
 
                 User user = new User();
