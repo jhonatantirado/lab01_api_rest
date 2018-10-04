@@ -2,12 +2,12 @@
 
 namespace EnterprisePatterns.Api.Migrations.MySQL
 {
-    [Migration(4)]
-    public class DirectorTable : Migration
+    [Migration(2)]
+    public class RoleTable : Migration
     {
         public override void Up()
         {
-            Execute.EmbeddedScript("4_DirectorTable.sql");
+            Execute.EmbeddedScript("2_role.sql");
         }
 
         public override void Down()

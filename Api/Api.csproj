@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
@@ -8,18 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Migrations\MySQL\4_DirectorTable.sql" />
-    <None Remove="Migrations\MySQL\5_MovieTable.sql" />
+    <EmbeddedResource Include="Migrations\MySQL\1_currency.sql" />
+    <EmbeddedResource Include="Migrations\MySQL\2_role.sql" />
+    <EmbeddedResource Include="Migrations\MySQL\3_customer.sql" />
+    <EmbeddedResource Include="Migrations\MySQL\4_user.sql" />
+    <EmbeddedResource Include="Migrations\MySQL\5_project.sql" />
   </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\MySQL\1_CustomerTable.sql" />
-    <EmbeddedResource Include="Migrations\MySQL\2_BankAccountTable.sql" />
-    <EmbeddedResource Include="Migrations\MySQL\3_IdsTable.sql" />
-    <EmbeddedResource Include="Migrations\MySQL\4_DirectorTable.sql" />
-    <EmbeddedResource Include="Migrations\MySQL\5_MovieTable.sql" />
-  </ItemGroup>
-
+  
   <ItemGroup>
     <Folder Include="Common\Application\Assembler\" />
     <Folder Include="Customers\Application\Dto\" />

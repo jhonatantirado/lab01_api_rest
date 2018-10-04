@@ -29,7 +29,7 @@ namespace EnterprisePatterns.Api
                 .AddFluentMigratorCore()
                 .ConfigureRunner(rb => rb
                     .AddMySql5()
-                    .WithGlobalConnectionString(Environment.GetEnvironmentVariable("MYSQL_STRCON_PATTERNS"))
+                    .WithGlobalConnectionString(Environment.GetEnvironmentVariable("MYSQL_STRCON_LAB01_API_REST"))
                     .ScanIn(typeof(CustomerTable).Assembly)
                     .For.All()
                 )

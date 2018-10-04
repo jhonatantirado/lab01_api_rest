@@ -2,12 +2,12 @@
 
 namespace EnterprisePatterns.Api.Migrations.MySQL
 {
-    [Migration(3)]
-    public class IdsTable : Migration
+    [Migration(5)]
+    public class ProjectTable : Migration
     {
         public override void Up()
         {
-            Execute.EmbeddedScript("3_IdsTable.sql");
+            Execute.EmbeddedScript("5_project.sql");
         }
 
         public override void Down()

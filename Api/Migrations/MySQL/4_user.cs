@@ -2,12 +2,12 @@
 
 namespace EnterprisePatterns.Api.Migrations.MySQL
 {
-    [Migration(2)]
-    public class BankAccountTable : Migration
+    [Migration(4)]
+    public class UserTable : Migration
     {
         public override void Up()
         {
-            Execute.EmbeddedScript("2_BankAccountTable.sql");
+            Execute.EmbeddedScript("4_user.sql");
         }
 
         public override void Down()
