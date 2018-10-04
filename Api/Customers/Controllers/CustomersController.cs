@@ -81,7 +81,7 @@ namespace EnterprisePatterns.Api.Controllers
                 User user = new User();
                 user.Username = signUpDto.Username;
                 user.Password = signUpDto.Password;
-                user.RoleId = 1;
+                user.RoleId = (long) Role.Owner;
                 user.Customer = customer;
                 _userRepository.Create(user);
 
@@ -89,7 +89,7 @@ namespace EnterprisePatterns.Api.Controllers
                 project.ProjectName = signUpDto.ProjectName;
                 project.Customer = customer;
                 project.Budget = signUpDto.Budget;
-                project.CurrencyId = 1;
+                project.CurrencyId = (long) Currency.EUR;
                 _projectRepository.Create(project);
 
                 _unitOfWork.Commit(uowStatus);
@@ -103,6 +103,22 @@ namespace EnterprisePatterns.Api.Controllers
 
             }
         }
+
+    }
+
+    public enum Role
+    {
+        Owner = 1,
+        Supervisor = 2 ,
+        Assistant = 3,
+
+    }
+
+    public enum Currency
+    {
+        PEN = 1,
+        USD = 2,
+        EUR = 3,
 
     }
 
